@@ -21,11 +21,19 @@ public class ParseIntegers {
         String justWords = "";
         while (words.hasNext()) {
             String next = words.next();
-            int number = Integer.parseInt(next);
-            // todo: complete it
+            if (next.matches("^[0-9]+$")) {
+                try {
+                    int number = Integer.parseInt(next);
+                    sum += number;
+                } catch (NumberFormatException e) {
+                    System.out.println("Parsing Exception should be handled");
+                }
+            } else {
+                justWords += next + " ";
+            }
         }
         System.out.println("Sum is " + sum);
-        System.out.println("Just words:" + justWords);
+        System.out.println("Just words: " + justWords);
     }
 }
 
